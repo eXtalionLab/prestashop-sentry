@@ -1,15 +1,15 @@
 
-extalion_modulename_configuration:
-  path: extmodulename/configuration
+extalion_sentry_configuration:
+  path: extsentry/configuration
   methods: [GET,POST]
   defaults:
-    _controller: Extalion\ModuleName\Controller\Admin\ConfigurationController::indexAction
-    _legacy_controller: ExtModuleNameAdminConfigurationController
+    _controller: Extalion\Sentry\Controller\Admin\ConfigurationController::indexAction
+    _legacy_controller: ExtSentryAdminConfigurationController
 
-extalion_modulename_index:
-  path: extmodulename/index
+extalion_sentry_index:
+  path: extsentry/index
   methods: [GET]
   defaults:
-    _controller: Extalion\ModuleName\Controller\Admin\ModuleNameController::indexAction
-    _legacy_controller: ExtModuleNameAdminModuleNameController
-    _legacy_link: ExtModuleNameAdminModuleNameController
+    _controller: Extalion\Sentry\Controller\Admin\SentryController::indexAction
+    _legacy_controller: ExtSentryAdminSentryController
+    _legacy_link: ExtSentryAdminSentryController

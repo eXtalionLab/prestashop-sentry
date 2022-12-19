@@ -1,9 +1,9 @@
 
 $(document).ready(() => {
-  extmodulename.init();
+  extsentry.init();
 });
 
-const extmodulename = {
+const extsentry = {
   requestStartSelector: 'ajax-request',
 
   init() {
@@ -17,28 +17,28 @@ const extmodulename = {
       async: true,
       data: {
         fc: 'module',
-        module: 'extmodulename',
+        module: 'extsentry',
         controller: 'bar',
         action: 'indexAction',
         ajax: true
       },
-      beforeSend: extmodulename.startRequest,
-      success: extmodulename.updateVar,
-      error: extmodulename.showError,
-      complete: extmodulename.finishRequest
+      beforeSend: extsentry.startRequest,
+      success: extsentry.updateVar,
+      error: extsentry.showError,
+      complete: extsentry.finishRequest
     });
   },
 
   startRequest(jqXHR, settings) {
     $('#content').append(
       '<div class="'
-      + extmodulename.requestStartSelector
+      + extsentry.requestStartSelector
       + '">Ajax request in progress...</div>'
     );
   },
 
   finishRequest(jqXHR, statusText) {
-    $('#content .' + extmodulename.requestStartSelector).remove();
+    $('#content .' + extsentry.requestStartSelector).remove();
   },
 
   updateVar(data, statusText, jqXHR) {

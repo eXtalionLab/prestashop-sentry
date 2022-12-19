@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Extalion\ModuleName\Form\Type;
+namespace Extalion\Sentry\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\CallbackTransformer;
@@ -24,7 +24,7 @@ class Configuration extends AbstractType
                     'constraints' => [
                         new Assert\NotBlank(),
                     ],
-                    'label' => 'Module name config 1',
+                    'label' => 'Sentry config 1',
                     'required' => true,
                 ]
             )
@@ -32,7 +32,7 @@ class Configuration extends AbstractType
                 'config_2',
                 CoreType\NumberType::class,
                 [
-                    'label' => 'Module name config 2',
+                    'label' => 'Sentry config 2',
                     'required' => true,
                 ]
             )

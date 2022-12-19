@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Extalion\ModuleName\Command;
+namespace Extalion\Sentry\Command;
 
 use PrestaShop\PrestaShop\Adapter\LegacyContextLoader;
 use PrestaShopBundle\Translation\TranslatorInterface;
@@ -29,11 +29,11 @@ class FooCommand extends Command
     protected function configure()
     {
         $this
-            ->setName('extalion:modulename:foo')
+            ->setName('extalion:sentry:foo')
             ->setDescription($this->translator->trans(
-                'Module name command description',
+                'Sentry command description',
                 [],
-                'Modules.Extmodulename.Admin'
+                'Modules.Extsentry.Admin'
             ))
         ;
     }
@@ -58,7 +58,7 @@ class FooCommand extends Command
         $io->success($this->translator->trans(
             'Foo command success',
             [],
-            'Modules.Extmodulename.Admin'
+            'Modules.Extsentry.Admin'
         ));
 
         return 0;

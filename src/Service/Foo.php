@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Extalion\ModuleName\Service;
+namespace Extalion\Sentry\Service;
 
-use Extalion\ModuleName\Repository\Configuration;
+use Extalion\Sentry\Repository\Configuration;
 use PrestaShop\PrestaShop\Adapter\Module\ModuleDataProvider;
 use PrestaShop\PrestaShop\Core\ConfigurationInterface;
 use PrestaShopBundle\Translation\TranslatorAwareTrait;
@@ -41,6 +41,6 @@ class Foo
             $this->moduleConfiguration->get('MODULE_CONFIG');
         }
 
-        $this->trans('Lorem ipsum', [], 'Modules.Extmodulename.Admin');
+        $this->trans('Lorem ipsum', [], 'Modules.Extsentry.Admin');
     }
 }

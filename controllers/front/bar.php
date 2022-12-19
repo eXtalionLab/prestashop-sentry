@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Symfony\Component\HttpFoundation\JsonResponse;
 
-class ExtModuleNameBarModuleFrontController extends ModuleFrontController
+class ExtSentryBarModuleFrontController extends ModuleFrontController
 {
     public function displayAjaxIndexAction(): void
     {

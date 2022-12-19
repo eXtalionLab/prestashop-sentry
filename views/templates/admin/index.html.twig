@@ -1,7 +1,7 @@
 {% extends '@PrestaShop/Admin/layout.html.twig' %}
 
 {% set layoutTitle %}
-  {% include '@Modules/extmodulename/views/templates/admin/header.html.twig' %}
+  {% include '@Modules/extsentry/views/templates/admin/header.html.twig' %}
 {% endset %}
 
 {% block content %}
@@ -11,13 +11,13 @@
 {% block stylesheets %}
   {{ parent() }}
 
-  <link href="{{ asset('/modules/extmodulename/views/css/back.css') }}" rel="stylesheet" type="text/css"/>
+  <link href="{{ asset('/modules/extsentry/views/css/back.css') }}" rel="stylesheet" type="text/css"/>
 {% endblock %}
 
 {% block javascripts %}
   {{ parent() }}
 
-  <script src="{{ asset('/modules/extmodulename/views/js/back.js') }}"></script>
+  <script src="{{ asset('/modules/extsentry/views/js/back.js') }}"></script>
 
   {# Rerender complex header #}
   <script>

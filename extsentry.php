@@ -6,20 +6,20 @@ if (!\defined('_PS_VERSION_')) {
     exit;
 }
 
-class ExtModuleName extends Module
+class ExtSentry extends Module
 {
     private array $tabsConfig = [
         [
-            'class_name' => 'ExtModuelNameAdminModuleNameController',
+            'class_name' => 'ExtModuelNameAdminSentryController',
             'icon' => 'warehouse', // https://fonts.google.com/icons
-            'name' => 'Module name',
+            'name' => 'Sentry',
             'parent' => '', // https://devdocs.prestashop-project.org/1.7/modules/concepts/controllers/admin-controllers/tabs/#which-parent-to-choose
         ],
     ];
 
     public function __construct()
     {
-        $this->name = 'extmodulename';
+        $this->name = 'extsentry';
         $this->tab = 'administration';
         $this->version = '0.1.0';
         $this->author = 'eXtalion.com';
@@ -29,20 +29,20 @@ class ExtModuleName extends Module
         parent::__construct();
 
         $this->displayName = $this->trans(
-            'Module name',
+            'Sentry',
             [],
-            'Modules.Extmodulename.Admin'
+            'Modules.Extsentry.Admin'
         );
         $this->description = $this->trans(
-            'Module name description',
+            'Sentry description',
             [],
-            'Modules.Extmodulename.Admin'
+            'Modules.Extsentry.Admin'
         );
 
         $this->confirmUninstall = $this->trans(
             'Are you sure',
             [],
-            'Modules.Extmodulename.Admin'
+            'Modules.Extsentry.Admin'
         );
 
         $this->ps_versions_compliancy = [
@@ -106,7 +106,7 @@ class ExtModuleName extends Module
                 $tab->name[$lang['id_lang']] = $this->trans(
                     $tabConfig['name'],
                     [],
-                    'Modules.Extmodulename.Admin',
+                    'Modules.Extsentry.Admin',
                     $lang['locale']
                 );
             }
@@ -144,9 +144,9 @@ class ExtModuleName extends Module
     {
         Tools::redirectAdmin(
             $this->context->link->getAdminLink(
-                'ExtModuleNameAdminConfigurationController',
+                'ExtSentryAdminConfigurationController',
                 true,
-                ['route' => 'extalion_modulename_configuration']
+                ['route' => 'extalion_sentry_configuration']
             )
         );
     }

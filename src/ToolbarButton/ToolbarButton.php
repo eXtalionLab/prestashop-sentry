@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Extalion\ModuleName\ToolbarButton;
+namespace Extalion\Sentry\ToolbarButton;
 
 class ToolbarButton
 {

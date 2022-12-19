@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Extalion\ModuleName\Repository;
+namespace Extalion\Sentry\Repository;
 
 use Doctrine\ORM\EntityRepository;
 

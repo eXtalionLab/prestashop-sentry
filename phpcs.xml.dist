@@ -19,7 +19,7 @@
     <file>src/</file>
     <file>upgrade/</file>
     <file>views/</file>
-    <file>extmodulename.php</file>
+    <file>extsentry.php</file>
 
     <rule ref="Generic.Files.LineLength">
         <properties>

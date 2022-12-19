@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Extalion\ModuleName\Entity;
+namespace Extalion\Sentry\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Table()
- * @ORM\Entity(repositoryClass=\Extalion\ModuleName\Repository\Configuration::class)
+ * @ORM\Entity(repositoryClass=\Extalion\Sentry\Repository\Configuration::class)
  */
-class ExtmodulenameConfiguration
+class ExtsentryConfiguration
 {
     /**
      * @ORM\Id

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Extalion\ModuleName\Controller\Admin;
+namespace Extalion\Sentry\Controller\Admin;
 
-use Extalion\ModuleName\Entity\ExtmodulenameConfiguration as ConfigurationEntity;
-use Extalion\ModuleName\Form\Type\Configuration as ConfigurationType;
-use Extalion\ModuleName\ToolbarButton\ToolbarButton;
-use Extalion\ModuleName\ToolbarButton\ToolbarButtonCollection;
+use Extalion\Sentry\Entity\ExtsentryConfiguration as ConfigurationEntity;
+use Extalion\Sentry\Form\Type\Configuration as ConfigurationType;
+use Extalion\Sentry\ToolbarButton\ToolbarButton;
+use Extalion\Sentry\ToolbarButton\ToolbarButtonCollection;
 use PrestaShopBundle\Controller\Admin\FrameworkBundleAdminController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -46,11 +46,11 @@ class ConfigurationController extends FrameworkBundleAdminController
         $language = $this->getContext()->language;
 
         return $this->render(
-            '@Modules/extmodulename/views/templates/admin/configuration.html.twig',
+            '@Modules/extsentry/views/templates/admin/configuration.html.twig',
             [
                 'layoutTitle' => $this->trans(
-                    'Module name configuration',
-                    'Modules.Extmodulename.Admin'
+                    'Sentry configuration',
+                    'Modules.Extsentry.Admin'
                 ),
                 'layoutHeaderToolbarBtn' => $this->getToolbarButtons()
                     ->toArray(),
@@ -97,7 +97,7 @@ class ConfigurationController extends FrameworkBundleAdminController
                     ->setClass('btn-outline-secondary')
                     ->setHelp($this->trans(
                         'Module translation',
-                        'Modules.Extmodulename.Admin'
+                        'Modules.Extsentry.Admin'
                     ))
                     ->setHref($this->generateUrl(
                         'admin_international_translation_overview',
@@ -105,13 +105,13 @@ class ConfigurationController extends FrameworkBundleAdminController
                             'lang' => $language->iso_code,
                             'locale' => $language->locale,
                             'type' => 'modules',
-                            'selected' => 'extmodulename',
+                            'selected' => 'extsentry',
                         ]
                     ))
                     ->setIcon('language')
                     ->setName($this->trans(
                         'Translation',
-                        'Modules.Extmodulename.Admin'
+                        'Modules.Extsentry.Admin'
                     ))
             )
         ;

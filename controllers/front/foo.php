@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-class ExtModuleNameFooModuleFrontController extends ModuleFrontController
+class ExtSentryFooModuleFrontController extends ModuleFrontController
 {
     public function setMedia(): bool
     {
         parent::setMedia();
 
         $this->registerStylesheet(
-            'extmodulename-front-css',
+            'extsentry-front-css',
             "{$this->module->getPathUri()}views/css/front.css"
         );
         $this->registerJavascript(
-            'extmodulename-front-js',
+            'extsentry-front-js',
             "{$this->module->getPathUri()}views/js/front.js"
         );
 
@@ -25,7 +25,7 @@ class ExtModuleNameFooModuleFrontController extends ModuleFrontController
         $this->context->smarty->assign([
             'foo' => 'bar',
         ]);
-        $this->setTemplate('module:extmodulename/views/templates/front/foo.tpl');
+        $this->setTemplate('module:extsentry/views/templates/front/foo.tpl');
 
         parent::initContent();
     }

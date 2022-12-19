@@ -1,10 +1,10 @@
 {
-  "name": "extalion/modulename",
-  "description": "Module name description",
+  "name": "extalion/sentry",
+  "description": "Sentry description",
   "type": "prestashop-module",
   "autoload": {
     "psr-4": {
-      "Extalion\\ModuleName\\": "src/"
+      "Extalion\\Sentry\\": "src/"
     }
   },
   "config": {

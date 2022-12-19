@@ -1,6 +1,6 @@
 
-extmodulename/
-extmodulename.zip
+extsentry/
+extsentry.zip
 vendor/
 
 .php-cs-fixer.cache

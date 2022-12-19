@@ -8,7 +8,7 @@
     <div class="col">
       <div class="card">
         <div class="card-header">
-          {{ 'Configuration'|trans({}, 'Modules.Extmodulename.Admin') }}
+          {{ 'Configuration'|trans({}, 'Modules.Extsentry.Admin') }}
         </div>
 
         <div class="card-body">
@@ -34,7 +34,7 @@
         <div class="card-footer">
           <div class="d-flex justify-content-end">
             <button class="btn btn-primary">
-              {{ 'Save'|trans({}, 'Modules.Extmodulename.Admin') }}
+              {{ 'Save'|trans({}, 'Modules.Extsentry.Admin') }}
             </button>
           </div>
         </div>
@@ -52,11 +52,11 @@
 {% block stylesheets %}
   {{ parent() }}
 
-  <link href="{{ asset('/modules/extmodulename/views/css/back.css') }}" rel="stylesheet" type="text/css"/>
+  <link href="{{ asset('/modules/extsentry/views/css/back.css') }}" rel="stylesheet" type="text/css"/>
 {% endblock %}
 
 {% block javascripts %}
   {{ parent() }}
 
-  <script src="{{ asset('/modules/extmodulename/views/js/back.js') }}"></script>
+  <script src="{{ asset('/modules/extsentry/views/js/back.js') }}"></script>
 {% endblock %}

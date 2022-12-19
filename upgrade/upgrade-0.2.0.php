@@ -8,7 +8,7 @@ if (!\defined('_PS_VERSION_')) {
 
 require_once __DIR__ . '/upgrade.php';
 
-function upgrade_module_0_2_0(ExtModuleName $module): bool
+function upgrade_module_0_2_0(ExtSentry $module): bool
 {
     $dbPrefix = _DB_PREFIX_;
     $sqlEngine = _MYSQL_ENGINE_;

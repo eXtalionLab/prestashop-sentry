@@ -1,5 +1,5 @@
 
-module_name=extmodulename
+module_name=extsentry
 module_dir=$(CURDIR)/../$(module_name)
 build_dir=$(module_name)
 version=$(shell grep '\->version =' $(module_name).php | grep -oe "[0-9]\+\.[0-9]\+\.[0-9]\+")
