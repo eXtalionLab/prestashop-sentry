@@ -1,0 +1,15 @@
+
+extalion_modulename_configuration:
+  path: extmodulename/configuration
+  methods: [GET,POST]
+  defaults:
+    _controller: Extalion\ModuleName\Controller\Admin\ConfigurationController::indexAction
+    _legacy_controller: ExtModuleNameAdminConfigurationController
+
+extalion_modulename_index:
+  path: extmodulename/index
+  methods: [GET]
+  defaults:
+    _controller: Extalion\ModuleName\Controller\Admin\ModuleNameController::indexAction
+    _legacy_controller: ExtModuleNameAdminModuleNameController
+    _legacy_link: ExtModuleNameAdminModuleNameController

@@ -1,0 +1,12 @@
+
+extmodulename/
+extmodulename.zip
+vendor/
+
+.php-cs-fixer.cache
+.phpcs-cache
+config.xml
+phpcs.xml
+phpmd.xml
+
+*index.php

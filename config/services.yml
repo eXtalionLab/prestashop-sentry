@@ -1,0 +1,34 @@
+
+services:
+  _defaults:
+    public: true
+
+  extalion.modulename.command.foo:
+    class: Extalion\ModuleName\Command\FooCommand
+    arguments:
+      - '@translator'
+      - '@prestashop.adapter.legacy_context_loader'
+    tags:
+      - { name: 'console.command' }
+
+  extalion.modulename.repository.configuration:
+    class: Extalion\ModuleName\Repository\Configuration
+    factory: ['@doctrine.orm.default_entity_manager', getRepository]
+    arguments:
+      - Extalion\ModuleName\Entity\ExtmodulenameConfiguration
+
+  extalion.modulename.service.foo:
+    class: Extalion\ModuleName\Service\Foo
+    arguments:
+      - '@=service("prestashop.adapter.legacy.context").getContext().language.id'
+      - '@=service("prestashop.adapter.legacy.context").getContext().shop.id'
+      - '@prestashop.adapter.data_provider.module'
+      - '@prestashop.adapter.legacy.configuration'
+      - '@extalion.modulename.repository.configuration'
+    calls:
+      - { method: setTranslator, arguments: ['@translator'] }
+
+  Extalion\ModuleName\Controller\Admin\ModuleNameController:
+    class: Extalion\ModuleName\Controller\Admin\ModuleNameController
+    arguments:
+      - '@extalion.modulename.service.foo'

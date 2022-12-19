@@ -1,0 +1,62 @@
+{% extends '@PrestaShop/Admin/layout.html.twig' %}
+
+{% block content %}
+  {{ form_start(form) }}
+  {{ form_errors(form) }}
+
+  <div class="row justify-content-center">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          {{ 'Configuration'|trans({}, 'Modules.Extmodulename.Admin') }}
+        </div>
+
+        <div class="card-body">
+          <div class="form-group row">
+            {{ form_label(form.config_1) }}
+
+            <div class="col-sm-4">
+              {{ form_errors(form.config_1) }}
+              {{ form_widget(form.config_1) }}
+            </div>
+          </div>
+
+          <div class="form-group row">
+            {{ form_label(form.config_2) }}
+
+            <div class="col-sm-4">
+              {{ form_errors(form.config_2) }}
+              {{ form_widget(form.config_2) }}
+            </div>
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <div class="d-flex justify-content-end">
+            <button class="btn btn-primary">
+              {{ 'Save'|trans({}, 'Modules.Extmodulename.Admin') }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: none">
+    {{ form_rest(form) }}
+  </div>
+
+  {{ form_end(form) }}
+{% endblock %}
+
+{% block stylesheets %}
+  {{ parent() }}
+
+  <link href="{{ asset('/modules/extmodulename/views/css/back.css') }}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+
+  <script src="{{ asset('/modules/extmodulename/views/js/back.js') }}"></script>
+{% endblock %}
