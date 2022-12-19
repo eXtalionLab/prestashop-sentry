@@ -8,14 +8,7 @@ if (!\defined('_PS_VERSION_')) {
 
 class ExtSentry extends Module
 {
-    private array $tabsConfig = [
-        [
-            'class_name' => 'ExtModuelNameAdminSentryController',
-            'icon' => 'warehouse', // https://fonts.google.com/icons
-            'name' => 'Sentry',
-            'parent' => '', // https://devdocs.prestashop-project.org/1.7/modules/concepts/controllers/admin-controllers/tabs/#which-parent-to-choose
-        ],
-    ];
+    private array $tabsConfig = [];
 
     public function __construct()
     {

@@ -11,7 +11,8 @@ phpcs-fix:
 	vendor/bin/phpcbf
 
 phpmd:
-	phpmd config,controllers,sql,src,upgrade,views,$(module_name).php text phpmd.xml.dist
+	#phpmd config,controllers,sql,src,upgrade,views,$(module_name).php text phpmd.xml.dist
+	phpmd config,sql,src,upgrade,views,$(module_name).php text phpmd.xml.dist
 
 php-cs-fixer:
 	php vendor/bin/php-cs-fixer fix

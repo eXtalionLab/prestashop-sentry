@@ -3,32 +3,8 @@ services:
   _defaults:
     public: true
 
-  extalion.sentry.command.foo:
-    class: Extalion\Sentry\Command\FooCommand
-    arguments:
-      - '@translator'
-      - '@prestashop.adapter.legacy_context_loader'
-    tags:
-      - { name: 'console.command' }
-
   extalion.sentry.repository.configuration:
     class: Extalion\Sentry\Repository\Configuration
     factory: ['@doctrine.orm.default_entity_manager', getRepository]
     arguments:
       - Extalion\Sentry\Entity\ExtsentryConfiguration
-
-  extalion.sentry.service.foo:
-    class: Extalion\Sentry\Service\Foo
-    arguments:
-      - '@=service("prestashop.adapter.legacy.context").getContext().language.id'
-      - '@=service("prestashop.adapter.legacy.context").getContext().shop.id'
-      - '@prestashop.adapter.data_provider.module'
-      - '@prestashop.adapter.legacy.configuration'
-      - '@extalion.sentry.repository.configuration'
-    calls:
-      - { method: setTranslator, arguments: ['@translator'] }
-
-  Extalion\Sentry\Controller\Admin\SentryController:
-    class: Extalion\Sentry\Controller\Admin\SentryController
-    arguments:
-      - '@extalion.sentry.service.foo'

@@ -14,7 +14,7 @@
     <rule ref="PSR12"/>
 
     <file>config/</file>
-    <file>controllers/</file>
+    <!-- <file>controllers/</file> -->
     <file>sql/</file>
     <file>src/</file>
     <file>upgrade/</file>

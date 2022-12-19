@@ -5,11 +5,3 @@ extalion_sentry_configuration:
   defaults:
     _controller: Extalion\Sentry\Controller\Admin\ConfigurationController::indexAction
     _legacy_controller: ExtSentryAdminConfigurationController
-
-extalion_sentry_index:
-  path: extsentry/index
-  methods: [GET]
-  defaults:
-    _controller: Extalion\Sentry\Controller\Admin\SentryController::indexAction
-    _legacy_controller: ExtSentryAdminSentryController
-    _legacy_link: ExtSentryAdminSentryController
