@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Extalion\Sentry\Form\Type;
 
+use Extalion\Sentry\Consts\ErrorTypesRegex;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type as CoreType;
@@ -37,6 +38,9 @@ class Configuration extends AbstractType
                 [
                     'attr' => [
                         'placeholder' => 'E_ALL',
+                    ],
+                    'constraints' => [
+                        new Assert\Regex('/' . ErrorTypesRegex::REGEX . '/'),
                     ],
                     'label' => 'Error types',
                     'required' => false,
