@@ -12,37 +12,77 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 class Configuration extends AbstractType
 {
+    public const ENV_PROD = 'production';
+    public const ENV_DEV = 'development';
+
     public function buildForm(
         FormBuilderInterface $builder,
         array $options
     ): void {
         $builder
             ->add(
-                'config_1',
+                'dsn',
                 CoreType\TextType::class,
                 [
                     'constraints' => [
                         new Assert\NotBlank(),
                     ],
-                    'label' => 'Sentry config 1',
+                    'label' => 'DSN',
                     'required' => true,
                 ]
             )
             ->add(
-                'config_2',
+                'error_types',
+                CoreType\TextType::class,
+                [
+                    'attr' => [
+                        'placeholder' => 'E_ALL',
+                    ],
+                    'label' => 'Error types',
+                    'required' => false,
+                ]
+            )
+            ->add(
+                'sample_rate',
                 CoreType\NumberType::class,
                 [
-                    'label' => 'Sentry config 2',
-                    'required' => true,
+                    'attr' => [
+                        'placeholder' => '1.0',
+                    ],
+                    'constraints' => [
+                        new Assert\Range(['max' => 1.0, 'min' => 0]),
+                    ],
+                    'label' => 'Sample rate',
+                    'required' => false,
+                ]
+            )
+            ->add(
+                'server_name',
+                CoreType\TextType::class,
+                [
+                    'label' => 'Server name',
+                    'required' => false,
+                ]
+            )
+            ->add(
+                'environment',
+                CoreType\ChoiceType::class,
+                [
+                    'choices' => [
+                        'Production' => self::ENV_PROD,
+                        'Development' => self::ENV_DEV,
+                    ],
+                    'label' => 'Environment',
+                    'required' => false,
                 ]
             )
         ;
 
         $builder
-            ->get('config_1')
+            ->get('sample_rate')
             ->addModelTransformer(new CallbackTransformer(
-                fn ($value) => $value,
-                fn ($value) => (int) $value
+                fn ($value) => (float) $value,
+                fn ($value) => $value
             ))
         ;
     }

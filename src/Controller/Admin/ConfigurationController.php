@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Extalion\Sentry\Controller\Admin;
 
+use Extalion\Sentry\Consts\SentryConfigFile;
 use Extalion\Sentry\Entity\ExtsentryConfiguration as ConfigurationEntity;
 use Extalion\Sentry\Form\Type\Configuration as ConfigurationType;
 use Extalion\Sentry\ToolbarButton\ToolbarButton;
@@ -14,6 +15,15 @@ use Symfony\Component\HttpFoundation\Response;
 
 class ConfigurationController extends FrameworkBundleAdminController
 {
+    private string $configFile;
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->configFile = SentryConfigFile::getPath();
+    }
+
     public function indexAction(Request $request): Response
     {
         $em = $this->get('doctrine.orm.default_entity_manager');
@@ -27,6 +37,7 @@ class ConfigurationController extends FrameworkBundleAdminController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
+            $newConfigurations = [];
 
             foreach ($data as $name => $value) {
                 $configuration = $this->createConfiguration(
@@ -36,9 +47,11 @@ class ConfigurationController extends FrameworkBundleAdminController
                 );
 
                 $em->persist($configuration);
+                $newConfigurations[] = $configuration;
             }
 
             $em->flush();
+            $this->saveConfigurationsToFile($newConfigurations);
 
             $this->addFlash('success', 'Configuration saved');
         }
@@ -55,6 +68,7 @@ class ConfigurationController extends FrameworkBundleAdminController
                 'layoutHeaderToolbarBtn' => $this->getToolbarButtons()
                     ->toArray(),
                 'form' => $form->createView(),
+                'configFile' => $this->configFile,
             ]
         );
     }
@@ -85,6 +99,28 @@ class ConfigurationController extends FrameworkBundleAdminController
             ->setName($name)
             ->setValue($value)
         ;
+    }
+
+    private function saveConfigurationsToFile(array $configurations): void
+    {
+        $configContent = '';
+
+        if (\file_exists($this->configFile)) {
+            $configContent = \file_get_contents($this->configFile);
+        }
+
+        $configData = (array) \json_decode($configContent, true);
+        $formData = [];
+
+        foreach ($configurations as $configuration) {
+            $formData[$configuration->getName()] = $configuration->getValue();
+        }
+
+        $configData = \array_merge($configData, $formData);
+        $configContent = \json_encode($configData);
+
+        \file_put_contents($this->configFile, $configContent);
+        \chmod($this->configFile, 0600);
     }
 
     private function getToolbarButtons(): ToolbarButtonCollection

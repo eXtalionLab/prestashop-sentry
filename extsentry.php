@@ -6,6 +6,9 @@ if (!\defined('_PS_VERSION_')) {
     exit;
 }
 
+use Extalion\Sentry\Exception\InstallerException;
+use Extalion\Sentry\Helper\Installer;
+
 class ExtSentry extends Module
 {
     private array $tabsConfig = [];
@@ -27,7 +30,7 @@ class ExtSentry extends Module
             'Modules.Extsentry.Admin'
         );
         $this->description = $this->trans(
-            'Sentry description',
+            'Sentry integration with prestashop',
             [],
             'Modules.Extsentry.Admin'
         );
@@ -64,16 +67,32 @@ class ExtSentry extends Module
 
     public function enable($forceAll = false): bool
     {
-        return parent::enable($forceAll)
-            && $this->installTab()
-        ;
+        try {
+            if (parent::enable($forceAll) && $this->installTab()) {
+                Installer::enableSentry();
+
+                return true;
+            }
+        } catch (InstallerException $ex) {
+            $this->_errors[] = $ex->getMessage();
+        }
+
+        return false;
     }
 
     public function disable($forceAll = false): bool
     {
-        return parent::disable($forceAll)
-            && $this->uninstallTab()
-        ;
+        try {
+            if (parent::disable($forceAll) && $this->uninstallTab()) {
+                Installer::disableSentry();
+
+                return true;
+            }
+        } catch (InstallerException $ex) {
+            $this->_errors[] = $ex->getMessage();
+        }
+
+        return false;
     }
 
     private function installTab(): bool

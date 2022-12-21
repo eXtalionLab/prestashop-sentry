@@ -10,3 +10,5 @@ phpcs.xml
 phpmd.xml
 
 *index.php
+
+sentry.json

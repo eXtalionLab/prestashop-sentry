@@ -1,6 +1,6 @@
 {
   "name": "extalion/sentry",
-  "description": "Sentry description",
+  "description": "Sentry integration with prestashop",
   "type": "prestashop-module",
   "autoload": {
     "psr-4": {
@@ -14,5 +14,8 @@
     "phpmd/phpmd": "^2.10",
     "prestashop/php-dev-tools": "^4.2",
     "squizlabs/php_codesniffer": "^3.6"
+  },
+  "require": {
+    "sentry/sdk": "^3.3"
   }
 }

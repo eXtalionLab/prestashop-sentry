@@ -1,6 +1,14 @@
 {% extends '@PrestaShop/Admin/layout.html.twig' %}
 
 {% block content %}
+  <div class="alert alert-warning">
+    <ul class="list-unstyled">
+      <li>
+        {{ 'Config is read from %file% !'|trans({'%file%': '<span class="badge badge-warning" title="' ~ configFile ~ '">file</span>'}, 'Modules.Extsentry.Admin')|raw }}
+      </li>
+    </ul>
+  </div>
+
   {{ form_start(form) }}
   {{ form_errors(form) }}
 
@@ -13,20 +21,68 @@
 
         <div class="card-body">
           <div class="form-group row">
-            {{ form_label(form.config_1) }}
+            {{ form_label(form.dsn) }}
 
             <div class="col-sm-4">
-              {{ form_errors(form.config_1) }}
-              {{ form_widget(form.config_1) }}
+              {{ form_errors(form.dsn) }}
+              {{ form_widget(form.dsn) }}
+
+              <small id="configuration_dsn_help" class="form-text text-muted">
+                {{ 'Go to settings to find it. Click %here%.'|trans({'%here%': '<a href="https://sentry.io/settings/" target="_blank">sentry.io</a>'}, 'Modules.Extsentry.Admin')|raw }}
+                {{ 'If empty Sentry will try to read it from the %env% env.'|trans({'%env%': '<strong>SENTRY_DSN</strong>'}, 'Modules.Extsentry.Admin')|raw }}
+              </small>
             </div>
           </div>
 
           <div class="form-group row">
-            {{ form_label(form.config_2) }}
+            {{ form_label(form.error_types) }}
 
             <div class="col-sm-4">
-              {{ form_errors(form.config_2) }}
-              {{ form_widget(form.config_2) }}
+              {{ form_errors(form.error_types) }}
+              {{ form_widget(form.error_types) }}
+
+              <small id="configuration_error_types_help" class="form-text text-muted">
+                {{ 'The same values as in %php%.'|trans({'%php%': '<a href="https://www.php.net/manual/en/errorfunc.configuration.php#ini.error-reporting" target="_blank">php.ini</a>'}, 'Modules.Extsentry.Admin')|raw }}
+              </small>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            {{ form_label(form.sample_rate) }}
+
+            <div class="col-sm-4">
+              {{ form_errors(form.sample_rate) }}
+              {{ form_widget(form.sample_rate) }}
+
+              <small id="configuration_sample_rate_help" class="form-text text-muted">
+                {{ 'Configures the sample rate for error events, in the range of %min% to %max%. See %sample_rate%.'|trans({'%min%': '<strong>0.0</strong>', '%max%': '<strong>1.0</strong>', '%sample_rate%': '<a href="https://docs.sentry.io/platforms/php/configuration/options/#sample-rate" target="_blank">sample_rate</a>'}, 'Modules.Extsentry.Admin')|raw }}
+              </small>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            {{ form_label(form.server_name) }}
+
+            <div class="col-sm-4">
+              {{ form_errors(form.server_name) }}
+              {{ form_widget(form.server_name) }}
+
+              <small id="configuration_server_name_help" class="form-text text-muted">
+                {{ 'The server name actually corresponds to the device hostname.'|trans({}, 'Modules.Extsentry.Admin') }}
+              </small>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            {{ form_label(form.environment) }}
+
+            <div class="col-sm-4">
+              {{ form_errors(form.environment) }}
+              {{ form_widget(form.environment) }}
+
+              <small id="configuration_environment_help" class="form-text text-muted">
+                {{ 'If empty Sentry will try to read it from the %env% env.'|trans({'%env%': '<strong>SENTRY_ENVIRONMENT</strong>'}, 'Modules.Extsentry.Admin')|raw }}
+              </small>
             </div>
           </div>
         </div>

@@ -49,6 +49,7 @@ build: composer-prod
 		--exclude=$(build_dir) \
 		--exclude=$(module_name).zip \
 		--exclude=Makefile \
+		--exclude=sentry.json \
 		$(module_dir)/ $(build_dir)
 
 archive:
